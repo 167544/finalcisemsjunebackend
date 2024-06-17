@@ -27,14 +27,16 @@ const transporter = nodemailer.createTransport({
 // Define the route for sending OTP
 router.post('/', async (req, res) => {
     const db = getDB()
-    const { email, employeeId, isAdmin } = req.body;
+    let { email, employeeId, isAdmin } = req.body;
     if (!email || !employeeId) {
         return res.status(400).json({ message: 'Email address and employee id is required' });
     }
     console.log('^^^^^^^^^^^^^^^^^^',employeeId,email)
+    employeeId = !isNaN(employeeId) ? Number(employeeId) : employeeId
     const query =  { "Employee ID": employeeId, "Employee Email": email }
     const employee = await db.collection("employeeDetails").findOne(query);
-    console.log('testing otp failed ######', query,employee)
+    console.log('1111testing otp failed ######', query,employee)
+    console.log('2222testing otp failed ######', employee);
     if (!employee) {
         return res.status(400).json({ message: "Employee details not found" });
     }
