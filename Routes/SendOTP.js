@@ -31,10 +31,10 @@ router.post('/', async (req, res) => {
     if (!email || !employeeId) {
         return res.status(400).json({ message: 'Email address and employee id is required' });
     }
-
-    const query =  { "Employee ID": Number(employeeId), "Employee Email": email }
+    console.log('^^^^^^^^^^^^^^^^^^',employeeId,email)
+    const query =  { "Employee ID": employeeId, "Employee Email": email }
     const employee = await db.collection("employeeDetails").findOne(query);
-
+    console.log('testing otp failed ######', query,employee)
     if (!employee) {
         return res.status(400).json({ message: "Employee details not found" });
     }

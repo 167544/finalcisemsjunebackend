@@ -1,5 +1,5 @@
 const express = require('express');
-const { getDB} = require('./dbconnection')
+const { getDB } = require('./dbconnection')
 
 const bcrypt = require('bcrypt');
 const { verifyIfManager } = require('../controllers/user');
@@ -9,12 +9,12 @@ const Register = express.Router().post("/", async (req, res) => {
     try {
         const db = getDB()
         const { name, Username, password, repeatPassword, userRole } = req.body;
-
+        console.log('testing otp33333333333333333', name, Username)
         console.log("userRoleuserRole", userRole)
 
-        
+
         // Check if a user with the same name or username already exists
-        const existingUser = await db.collection("Users").findOne({ $or: [ { name }] });
+        const existingUser = await db.collection("Users").findOne({ $or: [{ name }] });
         if (existingUser) {
             return res.status(400).send("User already exists");
         }
@@ -22,7 +22,7 @@ const Register = express.Router().post("/", async (req, res) => {
         const isManager = await verifyIfManager(Username)
 
         if (isManager && userRole == "User") {
-            return res.status(400).json({ message: `You are a manager. Kindly try registring as an admin!`})
+            return res.status(400).json({ message: `You are a manager. Kindly try registring as an admin!` })
         }
 
         // Check if password and repeatPassword match
@@ -42,7 +42,7 @@ const Register = express.Router().post("/", async (req, res) => {
         // if (data.user.userRole === "") {
         //     data.user.userRole = "User"; 
         // }
-        
+
         // Insert the new user into the database
         await db.collection("Users").insertOne(newUser);
         res.json({ message: "User registered successfully" });
