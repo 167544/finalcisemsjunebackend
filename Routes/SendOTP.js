@@ -72,7 +72,7 @@ router.post('/', async (req, res) => {
     const mailOptions = {
         from: 'ust.cis.ems@gmail.com', // Sender email address
         //to: emailOfFirstManagerOfAdminEmployee,
-         to: 'nehamary.baby@ust.com, vipin.kumarnair@ust.com, edwin.joseph12@ust.com', //change your email
+        // to: 'nehamary.baby@ust.com, vipin.kumarnair@ust.com', //change your email
         subject: emailSubject,
         text: emailBody
     };
