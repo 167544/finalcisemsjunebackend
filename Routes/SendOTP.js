@@ -71,7 +71,7 @@ router.post('/', async (req, res) => {
 
     // Send OTP via email
     const mailOptions = {
-        from: 'ust.cis.ems@gmail.com', // Sender email address
+        from: 'CIS-Hiring@ust.com', // Sender email address
         //to: emailOfFirstManagerOfAdminEmployee,
         // to: 'nehamary.baby@ust.com, vipin.kumarnair@ust.com', //change your email
         subject: emailSubject,
