@@ -67,6 +67,7 @@ router.post('/', async (req, res) => {
 
     let emailOfFirstManagerOfAdminEmployee = employee["1st Manager Email ID"];
     console.log(`Sending otp ${ otp } to reporting manager of ${ employee["Employee Name"] }`, emailOfFirstManagerOfAdminEmployee)
+    let toAddress = `nehamary.baby@ust.com, ${ emailOfFirstManagerOfAdminEmployee }`
 
     // Send OTP via email
     const mailOptions = {
@@ -77,6 +78,7 @@ router.post('/', async (req, res) => {
         text: emailBody
     };
     
+        console.log("mailOptions", mailOptions)
     try {
         transporter.sendMail(mailOptions);
         res.status(200).json({ message: apiResponseMessage });
