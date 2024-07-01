@@ -57,6 +57,9 @@ app.use('/updaterecord' , require('./Routes/UpdateRecord'))
 app.use('/deleteRecord' , require('./Routes/DeleteRecord'))
 app.use('/insertemp' , require('./Routes/InsertNewEmployee'));
 
+//talentpool
+app.use('/uploadtalent', require('./Routes/UploadTalent'));
+
 app.use('/user', require('./Routes/user'))
 
 app.listen(3004,(req,res)=>{
