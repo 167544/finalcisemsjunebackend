@@ -3,12 +3,18 @@ const { getTalentpoolCollection } = require('./dbconnection')
 
 const router = express.Router();
 
+<<<<<<< HEAD
 router.post("/", async (req, res) => {
 
     const { data } = req.body;
 
     console.log(`>>-------------->>>> | file: UploadTalent.js:10 | addTalentpool | data:`, data);
 
+=======
+const addTalentpool = router.post("/", async (req, res) => {
+
+    const { data } = req.body.data;
+>>>>>>> origin/main
 
     if (!data || !Array.isArray(data)) {
         return res.status(400).send('Invalid data format');
@@ -16,6 +22,7 @@ router.post("/", async (req, res) => {
 
     try {
         const collection = getTalentpoolCollection();
+<<<<<<< HEAD
 
         for (const record of data) {
             const { "UID": UID } = record;
@@ -45,10 +52,19 @@ router.post("/", async (req, res) => {
     } catch (error) {
         // console.error("Error inserting data:", error);
         // res.status(500).send('Internal Server Error');;
+=======
+        const result = await collection.insertMany(data);
+        console.log(`${result.insertedCount} documents were inserted`);
+        res.status(200).send({ message: 'Data inserted successfully' });
+    } catch (error) {
+        console.error("Error inserting data:", error);
+        res.status(500).send('Internal Server Error');;
+>>>>>>> origin/main
     }
     
 });
 
+<<<<<<< HEAD
 router.get(`/`, async (req, res) => {
     try {
         const collection = getTalentpoolCollection();
@@ -61,3 +77,6 @@ router.get(`/`, async (req, res) => {
 });
 
 module.exports = router;
+=======
+module.exports = addTalentpool;
+>>>>>>> origin/main
