@@ -58,11 +58,7 @@ app.use('/deleteRecord' , require('./Routes/DeleteRecord'))
 app.use('/insertemp' , require('./Routes/InsertNewEmployee'));
 
 //talentpool
-<<<<<<< HEAD
 app.use('/talent', require('./Routes/UploadTalent'));
-=======
-app.use('/uploadtalent', require('./Routes/UploadTalent'));
->>>>>>> origin/main
 
 app.use('/user', require('./Routes/user'))
 
