@@ -62,6 +62,9 @@ app.use('/talent', require('./Routes/UploadTalent'));
 
 app.use('/user', require('./Routes/user'))
 
+//codeByJ
+app.use('/fetchbydate',require('./Routes/fetchByDate'))
+
 app.listen(3004,(req,res)=>{
     console.log("server running")
 })
