@@ -62,8 +62,13 @@ app.use('/talent', require('./Routes/UploadTalent'));
 
 app.use('/user', require('./Routes/user'))
 
+// Add this line to include the new route for band data
+app.use('/talentpool', require('./Routes/talentpoolbandroutes'));
+
+
 //codeByJ
 app.use('/fetchbydate',require('./Routes/fetchByDate'))
+
 
 app.listen(3004,(req,res)=>{
     console.log("server running")
