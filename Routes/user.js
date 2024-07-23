@@ -28,13 +28,13 @@ userRouter.post('/reset-password-otp', async (req, res, next) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'jkng1809@gmail.com', // Enter your Gmail email address
+                user: 'ust.cis.ems@gmail.com', // Enter your Gmail email address
                 pass: 'urpt tvap lhha febw' // Enter your Gmail password
             }
         });
 
         const mailOptions = {
-            from: 'jkng1809@gmail.com', // Sender email address
+            from: 'ust.cis.ems@gmail.com', // Sender email address
             to: email,
             subject: 'Reset password for CIS UST',
             text: `The OTP to reset your password is ${otp}`
