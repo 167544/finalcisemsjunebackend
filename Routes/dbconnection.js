@@ -7,7 +7,7 @@ let _talentpoolcollection
 
 const connectDB = async () => {
     try {
-        const client = await MongoClient.connect("mongodb://0.0.0.0:27017");
+        const client = await MongoClient.connect("mongodb://localhost:27017");
         _db = client.db("employee");
         _collection = _db.collection("employeeDetails");
         _talentpoolcollection = _db.collection("talentpoolDetails")
