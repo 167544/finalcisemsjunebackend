@@ -2,6 +2,12 @@ let express =require('express');
 let bodyparser = require('body-parser')
 let cors = require('cors')
 let {connectDB} = require('./Routes/dbconnection')
+let UpdateTalentPoolRecord = require('./Routes/UpdateTalentPoolRecord');
+
+const talentRoutes = require('./Routes/talentRoutes'); // Adjust the path if necessary
+
+const talentpoolRoutes = require('./Routes/talentpoolRoutes'); // Adjust the path if necessary
+
 
 
 let app = express();
@@ -66,8 +72,27 @@ app.use('/user', require('./Routes/user'))
 app.use('/talentpool', require('./Routes/talentpoolbandroutes'));
 
 
-//codeByJ
+//codeByJExit
 app.use('/fetchbydate',require('./Routes/fetchByDate'))
+
+//newlyjoineddate
+app.use('/fetchNewJoinsByDate',require('./Routes/fetchNewJoinsByDate'))
+
+
+app.use('/talentupdate', require('./Routes/talentRoutes')); // This should point to the correct route file
+
+// Talent pool specific routes
+app.use('/talentpool/details', require('./Routes/FetchTalentPool'));
+app.use('/talentpoolupdate', require('./Routes/UpdateTalentPoolRecord'));
+
+// Talent Pool routes
+app.use('/talentpool', UpdateTalentPoolRecord);
+
+app.use('/talentpool', talentpoolRoutes);
+
+
+
+
 
 
 app.listen(3004,(req,res)=>{
