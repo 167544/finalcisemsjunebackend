@@ -4,9 +4,11 @@ const { getCollection } = require('./dbconnection');
 const UpdateRecord = express.Router().put("/:id", async (req, res) => {
     try {
         const collection = getCollection();
-        const filter = { "Employee ID": parseInt(req.params.id) };
+        const employeeID = isNaN(req.params.id) ? req.params.id : parseInt(req.params.id)
+        const filter = { "Employee ID": employeeID };
         req.body["Last Updated Date"] = new Date;
         const updateData = { $set: req.body }; // Assuming req.body contains the update data
+        console.log("Update data", req.params.id, updateData)
         delete updateData._id; // Exclude _id field from update
         const result = await collection.updateOne(filter, updateData);
 

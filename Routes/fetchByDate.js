@@ -4,6 +4,8 @@ const { getCollection } = require('./dbconnection');
 const fetchbydate = express.Router().get("/", async (req, res) => {
     try {
         const { fromDate, toDate } = req.query; // Get fromDate and toDate from query parameters
+        console.log("____",fromDate);
+        console.log("____",toDate);
 
         // Convert query parameters to integers if they are strings
         const fromDateInt = parseInt(fromDate, 10);
@@ -13,6 +15,8 @@ const fetchbydate = express.Router().get("/", async (req, res) => {
         }
 
         const collection = getCollection();
+
+        console.log(fromDateInt, toDateInt );
 
         // Find documents where 'Exit Date' is between fromDate and toDate
         const result = await collection.find({

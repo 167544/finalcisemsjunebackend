@@ -39,6 +39,7 @@ const getTalentpoolCollection = () => {
     return _talentpoolcollection;
 };
 
+
 module.exports = {
     connectDB,
     getDB,

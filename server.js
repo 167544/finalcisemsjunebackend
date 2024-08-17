@@ -90,6 +90,8 @@ app.use('/talentpool', UpdateTalentPoolRecord);
 
 app.use('/talentpool', talentpoolRoutes);
 
+app.use('/clients', require('./Routes/fetchClients'));
+
 
 
 
